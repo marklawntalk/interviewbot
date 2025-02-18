@@ -26,6 +26,7 @@ class InterviewController extends Controller
 
     public function screen2()
     {
+        
         return Inertia::render('Screen2');
     }
 
