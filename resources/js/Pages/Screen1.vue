@@ -14,6 +14,7 @@ const submit = () => {
     router.visit(route('screen1', {
         search: searchForm.search,
     }), {
+        preserveState: true,
         only: ['records'],
     })
 };
@@ -47,21 +48,21 @@ const debouncedSubmit = debounce(submit, 300)
                 </div>
 
                 <div>
-                    <table>
+                    <table class="min-w-full border border-gray-300">
                         <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Status</th>
-                                <th>Notes</th>
+                            <tr class="bg-gray-200">
+                                <th class="px-4 py-2 border">ID</th>
+                                <th class="px-4 py-2 border">Title</th>
+                                <th class="px-4 py-2 border">Status</th>
+                                <th class="px-4 py-2 border">Notes</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="record in records">
-                                <td>{{ record.ID }}</td>
-                                <td>{{ record.Title }}</td>
-                                <td>{{ record.Status }}</td>
-                                <td>{{ record.Notes }}</td>
+                            <tr v-for="record in records" class="odd:bg-white even:bg-gray-100">
+                                <td class="px-4 py-2 border">{{ record.ID }}</td>
+                                <td class="px-4 py-2 border">{{ record.Title }}</td>
+                                <td class="px-4 py-2 border">{{ record.Status }}</td>
+                                <td class="px-4 py-2 border">{{ record.Notes }}</td>
                             </tr>
                         </tbody>
                     </table>
