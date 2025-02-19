@@ -70,7 +70,7 @@ const previous = () => {
             <div class="main-inner min-h-screen w-full">
                 <div class="mb-5">
                     <div>
-                        <input type="text" @change="debouncedSubmit" v-model="searchForm.search">
+                        <input type="text" placeholder="Search for category" @change="debouncedSubmit" v-model="searchForm.search">
                     </div>
                 </div>
                 <div class="relative w-full max-w-[350px] flex items-center bg-gray-200">
