@@ -42,12 +42,12 @@ const toggle = (row_index, index) => {
             <div class="main-inner min-h-screen w-full">
                 <div v-for="(box_row,row_index) in final_boxes" class="relative flex">
 
-                    <div v-for="(box_column,index) in box_row" @click="toggle(row_index,index)"
+                    <div v-for="(box_column,index) in box_row"
                         :class="[box_column == 1 ? 'bg-blue-800' : 'bg-red-800']"
                         class="w-[100px] h-[100px] bg-red-800 border border-black flex items-center justify-center">
-                        <span>
-                            {{ box_column }}
-                        </span>
+                        <div class="w-full h-full text-center cursor-pointer align-middle flex items-center justify-center" @click="toggle(row_index,index)">
+                            <div>{{ box_column }}</div>
+                        </div>
                     </div>
 
                 </div>
