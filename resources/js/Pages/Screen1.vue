@@ -15,7 +15,6 @@ const submit = () => {
         search: searchForm.search,
     }), {
         only: ['records'],
-        preserveState: true,
     })
 };
 

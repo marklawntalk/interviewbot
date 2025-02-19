@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Random\Randomizer;
 
 class InterviewController extends Controller
 {
@@ -30,8 +31,41 @@ class InterviewController extends Controller
         return Inertia::render('Screen2');
     }
 
-    public function screen3()
+    public function screen3(Request $request)
     {
-        return Inertia::render('Screen3');
+        return Inertia::render('Screen3', [
+            'boxes' => function() use ($request) {
+
+                if ($request->has('boxes')) {
+                    //flip surrounding boxes
+                    $boxes = json_decode($request->boxes);
+                    //left
+                    $center_color = $boxes[$request->row_index][$request->index];
+                    $boxes[$request->row_index][$request->index] = (int)!$center_color; //flip center
+                    if ($request->index-1 >= 0) {
+                        $boxes[$request->row_index][$request->index-1] = (int)$center_color; //left
+                    }
+                    if ($request->index+1 < 3) {
+                        $boxes[$request->row_index][$request->index+1] = (int)$center_color; //right
+                    }
+
+                    if ($request->row_index - 1 >= 0) {
+                        $boxes[$request->row_index-1][$request->index] = (int)$center_color; //top
+                    }
+
+                    if ($request->row_index + 1 < 3) {
+                        $boxes[$request->row_index+1][$request->index] = (int)$center_color; //bottom
+                    }
+
+                    return $boxes;
+                }
+
+                return [
+                    [rand(0,1), rand(0,1), rand(0,1)],
+                    [rand(0,1), rand(0,1), rand(0,1)],
+                    [rand(0,1), rand(0,1), rand(0,1)]
+                ];
+            }
+        ]);
     }
 }

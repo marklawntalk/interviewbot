@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/screen1', [InterviewController::class, 'screen1'])->name('screen1');
 Route::get('/screen2', [InterviewController::class, 'screen2'])->name('screen2');
-Route::get('/screen3', [InterviewController::class, 'screen1'])->name('screen3');
+Route::get('/screen3', [InterviewController::class, 'screen3'])->name('screen3');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
