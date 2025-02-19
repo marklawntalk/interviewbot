@@ -73,7 +73,7 @@ const previous = () => {
                         <input type="text" @change="debouncedSubmit" v-model="searchForm.search">
                     </div>
                 </div>
-                <div class="relative w-full flex items-center bg-gray-200">
+                <div class="relative w-full max-w-[350px] flex items-center bg-gray-200">
                     <button @click="previous" v-if="current_image && arrow > 0" class="absolute left-0 top-1/2 -translate-y-1/2 p-2 bg-gray-800 text-white rounded-full">
                         ←
                     </button>
